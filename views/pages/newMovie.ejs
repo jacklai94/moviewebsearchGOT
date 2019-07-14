@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/header.ejs %>
+    <title>GOT MovieEngine</title>
+</head>
+
+<body>
+    <div class="wrapper p-3">
+        <div class="content-wrapper mt-2">
+            <div class="content p-3">
+                <div class="container-fluid">
+                    <div class="container">
+                        <form action="/insertNew" method="post">
+                            <div class="form-group input-group mb-2">
+                                <a class="btn btn-primary" href="/got">Game of thrones details</a>
+                                <input type="text" class="form-control" name="movieName" placeholder="Movie Name" required>
+                                <button type="submit" class="btn btn-secondary input-group-append">Add</button>  
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-bordered table-striped" name="tableList" id="table_list">
+                                <thead>
+                                    <th>Title</th>
+                                    <th>Year</th>
+                                    <th>Type</th>
+                                    <th>Action</th>
+                                </thead>
+                                <tbody>
+                                    <% for(var i = 0; i < movie.length; i++){ %>
+                                        <tr>
+                                            <td><%= movie[i].title %></td>
+                                            <td><%= movie[i].year %></td>
+                                            <td><%= movie[i].type %></td>
+                                            <td class="text-center">
+                                                <button class="btn btn-danger" id="deleteCatBtn" onclick="location.href='/delete?q=<%= movie[i]._id %>'">Delete</button>
+                                            </td>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/header.ejs %>
+    <title>GOT MovieEngine</title>
+</head>
+<body>
+    <div class="wrapper p-3">
+        <div class="content-wrapper mt-2">
+            <div class="content p-3">
+                <div class="container-fluid">
+                    <div class="container">
+                        <a href="/" class="btn btn-primary">Back to Movie Details</a>
+                        <!-- <a href="/got/insert">Add Data</a> -->
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-bordered table-striped" name="tableList" id="table_list">
+                                <thead>
+                                    <th>Name</th>
+                                    <th>ISBN</th>
+                                    <th>Country</th>
+                                    <th>Action</th>
+                                </thead>
+                                <tbody>
+                                    <% for(var i = 0; i < book.length; i++){ %>
+                                        <tr>
+                                            <td><%= book[i].name %></td>
+                                            <td><%= book[i].isbn %></td>
+                                            <td><%= book[i].country %></td>
+                                            <td class="text-center">
+                                                <button class="btn btn-danger" id="deleteCatBtn" onclick="location.href='/delete/got?q=<%= book[i]._id %>'">Delete</button>
+                                            </td>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
